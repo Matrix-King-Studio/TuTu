@@ -9,4 +9,4 @@
 # >>> Github    : https://github.com/koking0
 # >>> Blog      : https://alex007.blog.csdn.net/
 # ☆ ☆ ☆ ☆ ☆ ☆ ☆
-print("TuTu: 基于视觉基座模型的图片识别与理解功能库")
+from .TuTu import TuTu

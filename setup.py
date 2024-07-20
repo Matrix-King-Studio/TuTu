@@ -15,7 +15,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="Hu-Tu-Tu",
+    name="HuTuTu",
     version="0.0.1",
     author="alex",
     author_email="liu_zhao_feng_alex@163.com",
@@ -36,6 +36,6 @@ setuptools.setup(
     python_requires=">=3.9",
     platforms="any",
     install_requires=[
-        "requests==2.32.3"
+        "transformers==4.42.4"
     ]
 )
