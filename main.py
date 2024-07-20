@@ -2,13 +2,12 @@ import torch
 import requests
 
 from PIL import Image
-from transformers import AutoProcessor, AutoModelForCausalLM 
+from transformers import AutoProcessor, AutoModelForCausalLM
 
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
-torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
 
-model = AutoModelForCausalLM.from_pretrained("microsoft/Florence-2-large-ft", torch_dtype=torch_dtype, trust_remote_code=True).to(device)
+model = AutoModelForCausalLM.from_pretrained("microsoft/Florence-2-large-ft", trust_remote_code=True).to(device)
 processor = AutoProcessor.from_pretrained("microsoft/Florence-2-large-ft", trust_remote_code=True)
 
 prompt = "<OD>"
@@ -16,7 +15,7 @@ prompt = "<OD>"
 url = "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/tasks/car.jpg?download=true"
 image = Image.open(requests.get(url, stream=True).raw)
 
-inputs = processor(text=prompt, images=image, return_tensors="pt").to(device, torch_dtype)
+inputs = processor(text=prompt, images=image, return_tensors="pt").to(device)
 
 generated_ids = model.generate(
     input_ids=inputs["input_ids"],
