@@ -7,7 +7,7 @@ from transformers import AutoProcessor, AutoModelForCausalLM
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
-model = AutoModelForCausalLM.from_pretrained("microsoft/Florence-2-large-ft", trust_remote_code=True).to(device)
+model = AutoModelForCausalLM.from_pretrained("microsoft/Florence-2-large-ft", trust_remote_code=True).eval().to(device)
 processor = AutoProcessor.from_pretrained("microsoft/Florence-2-large-ft", trust_remote_code=True)
 
 prompt = "<OD>"
