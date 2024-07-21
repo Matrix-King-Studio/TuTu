@@ -6,7 +6,7 @@ from transformers import AutoProcessor, AutoModelForCausalLM
 class TuTu:
     def __init__(self):
         self.device = "cuda:0" if torch.cuda.is_available() else "cpu"
-        model_id = "microsoft/Florence-2-large-ft"
+        model_id = "microsoft/Florence-2-base-ft"
         self.model = AutoModelForCausalLM.from_pretrained(
             model_id, trust_remote_code=True).eval().to(self.device)
         self.processor = AutoProcessor.from_pretrained(
